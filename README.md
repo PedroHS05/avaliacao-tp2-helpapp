@@ -23,7 +23,7 @@ Implementar os repositórios `Category` e `Product` seguindo os padrões da Clea
 ---
 # 🔧 Comandos utilizados
 ## Criação da migration
-dotnet ef migrations add Initial --project Infra.Data --startup-project WebAPI
+   Update-Database -Project HelpApp.Infra.Data -StartupProject HelpApp.API
 
 ## Aplicação no banco de dados (Azure)
 dotnet ef database update --project Infra.Data --startup-project WebAPI
