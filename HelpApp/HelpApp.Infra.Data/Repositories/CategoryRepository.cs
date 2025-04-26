@@ -50,8 +50,8 @@ namespace HelpApp.Infra.Data.Repositories
 
         public async Task<Category> Remove(Category category)
         {
-            var existingCategory = await _context.Categories.Include(c => category.Products).FirstOrDefaultAsync(c => c.Id == category.Id);
-            if (existingCategory != null)
+            var existingCategory = await _context.Categories.Include(c => c.Products).FirstOrDefaultAsync(c => c.Id == category.Id);
+            if (existingCategory == null)
             {
                 return null;
             }

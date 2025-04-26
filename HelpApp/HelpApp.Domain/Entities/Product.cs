@@ -1,5 +1,4 @@
-﻿using HelpApp.Domain.Entities;
-using HelpApp.Domain.Validation;
+﻿using HelpApp.Domain.Validation;
 
 namespace HelpApp.Domain.Entities
 {
@@ -49,8 +48,13 @@ namespace HelpApp.Domain.Entities
 
             DomainExceptionValidation.When(stock < 0, "Invalid stock negative value.");
 
-            DomainExceptionValidation.When(image.Length > 250, "Invalid image name, too long, maximum 250 characters.");
+            DomainExceptionValidation.When(image?.Length > 250, "Invalid image name, too long, maximum 250 characters.");
 
+            Name = name;
+            Description = description;
+            Price = price;
+            Stock = stock;
+            Image = image;
         }
     }
 }
