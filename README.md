@@ -17,63 +17,50 @@ Implementar os repositórios `Category` e `Product` seguindo os padrões da Clea
 - [x] Configurações com `EntityTypeConfiguration` para `Category` e `Product`
 - [x] Injeção de dependência configurada (`DependencyInjectionAPI`)
 - [x] Migration `Initial` criada com `HasData()` para categorias
-- [x] Banco de dados SQL Server criado no Azure
-- [x] Migration aplicada com sucesso no Azure via `dotnet ef database update`
+- [x] Banco de dados SQL Server criado localmente no SQL Server Manager Studio
+- [x] Migration aplicada com sucesso no SSMS via `dotnet ef database update`
 
 ---
-# 🔧 Comandos utilizados
-## Criação da migration
-   Update-Database -Project HelpApp.Infra.Data -StartupProject HelpApp.API
+## 🔧 Comandos utilizados
 
-## Aplicação no banco de dados (Azure)
-dotnet ef database update --project Infra.Data --startup-project WebAPI
+Criação da migration
+° dotnet ef migrations add Initial --project HelpApp.Infra.Data --startup-project HelpApp.API
 
+Aplicação local da migration
+° Update-Database -Project HelpApp.Infra.Data -StartupProject HelpApp.API
 
-## Aplicação no banco de dados (Azure)
-dotnet ef database update --project Infra.Data --startup-project WebAPI
-
-# 🔗 String de conexão (mascarada)
-
+🔗 String de conexão (Local)
 "ConnectionStrings": {
-  "DefaultConnection": "Server=tcp:servidor-sql-aluno.database.windows.net,1433;Initial Catalog=NomeDoBanco;Persist Security Info=False;User ID=aluno_azure;Password=********;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+  "DefaultConnection": "Data Source=DESKTOP-HT5FAOF\\SQLEXPRESS;Initial Catalog=HelpAppDb;Integrated Security=True;TrustServerCertificate=True;"
 }
 
-# ☁️ Configuração no Azure
-SQL Server criado no portal Azure
+💾 Configuração Local
+SQL Server Express instalado localmente
+Banco de dados nomeado: HelpAppDb
 
-Banco de dados nomeado: avaliacao_tp2_aluno
-
-IP local autorizado no firewall
-
-Autenticação SQL ativada
-
-Migration aplicada com sucesso diretamente do Visual Studio Terminal
-
-# 🖼️ Prints de evidência (opcional)
-Insira prints aqui comprovando:
-
-Aplicação bem-sucedida da migration no Azure
-
-Tabelas e dados populados
+Migration aplicada com sucesso diretamente do Visual Studio Terminal (terminal nuget manager)
 
 # 👨‍💻 Dados do aluno
-Nome: [Seu Nome Aqui]
+Nome: Pedro Henrique Scabelo
 Curso: Desenvolvimento de Sistemas – 3º Semestre
 
 Professor: Victor Icoma
 
-Branch da entrega: avaliacao-githubaluno
+Branch da entrega: avaliacao-PedroHS05
 
 ## 🧱 Estrutura da aplicação
 
 ```bash
-📦 src
- ┣ 📂 Domain
- ┣ 📂 Application
- ┣ 📂 Infra
- ┃ ┣ 📂 Data
- ┃ ┃ ┣ 📂 Migrations
- ┃ ┃ ┣ 📂 Repositories
- ┃ ┃ ┗ 📂 EntityConfiguration
- ┗ 📂 WebAPI
+📦 HelpApp
+ ┣ 📂 HelpApp.Domain
+ ┃ ┣ 📂 Entities
+ ┃ ┗ 📂 Interfaces
+ ┣ 📂 HelpApp.Application
+ ┣ 📂 HelpApp.Infra.Data
+ ┃ ┣ 📂 Context
+ ┃ ┣ 📂 Migrations
+ ┃ ┣ 📂 Repositories
+ ┃ ┗ 📂 EntitiesConfiguration
+ ┣ 📂 HelpApp.Infra.IoC
+ ┗ 📂 HelpApp.API
 
